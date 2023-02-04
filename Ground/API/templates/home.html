@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Data from Flight</h1>
+
+<h2>Data Sent From Ground</h2>
+{% for j in data['ground-data'] %}
+    <h2>{{j['count']}}</h2>
+    <h3> &nbsp; &nbsp; {{ j['time_sent_from_ground'] }}</h3>
+    <h3> &nbsp; &nbsp; {{ j['time_received_on_flight_api'] }}</h3>
+{% endfor %}
+
+<h2>Data Sent From Flight</h2>
+{% for j in data['flight-data'] %}
+    <h2>{{j['count']}}</h2>
+    <h3> &nbsp; &nbsp; {{ j['time_created_from_script'] }}</h3>
+    <h3> &nbsp; &nbsp; {{ j['time_received_on_flight_api'] }}</h3>
+{% endfor %}
+
+<br>
+<br>
+<br>
+
+<form action="/send-data-to-flight" method="post">
+    <label for="fname">Text:</label><br>
+    <input type="text" id="fname" name="fname" value="Text"><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
